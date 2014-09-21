@@ -5,12 +5,12 @@ jboss_http_port: 8180
 jboss_https_port: 8443
 
 ## Where to install jboss and Unix user/group
-jboss_owner                              : "jboss" 
+jboss_owner                              : "jboss"
 jboss_group                              : "jboss"
 jboss_shell                              : "/bin/false"
 jboss_base_dir                           : "/usr/share/jboss-as"
 
-## Most likely you dont need to edit 
+## Most likely you dont need to edit
 #todo jboss_service_enabled   : 'yes'
 jboss_major             : "7"
 jboss_minor             : "1.1"
