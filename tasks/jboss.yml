@@ -34,10 +34,10 @@
   group: name={{ jboss_group }}
 
 - name: Add user "{{ jboss_owner }}"
-  user: name={{ jboss_owner }} group=jboss home={{ jboss_base_dir }} comment="Jboss User" 
+  user: name={{ jboss_owner }} group={{ jboss_group }} home={{ jboss_base_dir }} shell={{ jboss_shell }} comment="Jboss User" 
 
 - name: Change ownership of JBoss installation
-  file: path={{ jboss_base_dir }}/ owner={{ jboss_owner }} group={{ jboss_group }} shell={{ jboss_shell }} state=directory recurse=yes
+  file: path={{ jboss_base_dir }}/ owner={{ jboss_owner }} group={{ jboss_group }} state=directory recurse=yes
 
 - name: Copy the init script
   copy: src=jboss-as-standalone-{{ ansible_distribution }}-{{ ansible_architecture }}.sh dest=/etc/init.d/jboss mode=0755
