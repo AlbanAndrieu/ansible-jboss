@@ -21,3 +21,8 @@ jboss_archive_extracted : "{{ jboss_full_name }}"
 jboss_archive           : "{{ jboss_full_name }}.zip"
 jboss_url               : "http://download.jboss.org/jbossas/7.1/{{ jboss_full_name }}/{{ jboss_archive }}"
 jboss_home_dir          : "{{jboss_base_dir}}/{{jboss_name}}"
+
+docker_files_generated_directory         : "roles/jboss"
+docker_volume_directory                  : "/var/log/jboss-as"
+docker_working_directory                 : "/home/vagrant"
+docker_image_name                        : "nabla/ansible-jboss"
