@@ -22,13 +22,13 @@ RUN         pwd
 RUN         ls -lrta
 
 # ADD
-ADD defaults $WORKDIR/ansible-zap/defaults
-ADD meta $WORKDIR/ansible-zap/meta
-ADD files $WORKDIR/ansible-zap/files
-ADD handlers $WORKDIR/ansible-zap/handlers
-ADD tasks $WORKDIR/ansible-zap/tasks
-ADD templates $WORKDIR/ansible-zap/templates
-#ADD vars $WORKDIR/ansible-zap/vars
+ADD defaults $WORKDIR/ansible-jboss/defaults
+ADD meta $WORKDIR/ansible-jboss/meta
+ADD files $WORKDIR/ansible-jboss/files
+ADD handlers $WORKDIR/ansible-jboss/handlers
+ADD tasks $WORKDIR/ansible-jboss/tasks
+ADD templates $WORKDIR/ansible-jboss/templates
+#ADD vars $WORKDIR/ansible-jboss/vars
 
 # Here we continue to use add because
 # there are a limited number of RUNs

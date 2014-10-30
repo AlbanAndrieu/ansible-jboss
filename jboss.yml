@@ -1,13 +1,13 @@
 ---
 - hosts: all
   sudo: true
-  roles:
-    - role: ./
-#    - ansible-jboss
 
-  vars:     
-    docker_files_generated_directory: ""
-    docker_files_enable: no       
-       
+  roles:
+    - { role: ./,
+        docker_files_enable: yes
+        #user: "root",
+        #home: "/root"     
+      }
+
 #TODO
 #- include: docker/integration-tests.yml

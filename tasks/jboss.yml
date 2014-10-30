@@ -1,12 +1,12 @@
 ---
-- name: Install Java 1.7 and some basic dependencies (yum)
+- name: Install Java 1.7 and some basic dependencies
   yum: name={{ item }} state=present
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'    
   with_items:
    - unzip
    - java-1.7.0-openjdk
    
-- name: Install Java 1.7 and some basic dependencies (apt)
+- name: Install Java 1.7 and some basic dependencies
   apt: pkg={{ item }} state=present update_cache=yes  
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'  
   with_items:
