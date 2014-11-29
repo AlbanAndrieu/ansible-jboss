@@ -1,4 +1,3 @@
----
 jboss_enabled: yes                       # Enable module
 
 jboss_http_port: 8180

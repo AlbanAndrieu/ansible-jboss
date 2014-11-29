@@ -1,6 +1,6 @@
-## jboss
+## alban.andrieu.jboss
 
-[![Travis CI](http://img.shields.io/travis/AlbanAndrieu/ansible-jboss.svg?style=flat)](http://travis-ci.org/AlbanAndrieu/ansible-jboss) [![Branch](http://img.shields.io/github/tag/AlbanAndrieu/ansible-jboss.svg?style=flat-square)](https://github.com/AlbanAndrieu/ansible-jboss/tree/master) [![Donate](https://img.shields.io/gratipay/AlbanAndrieu.svg?style=flat)](https://www.gratipay.com/AlbanAndrieu)  [![Ansible Galaxy](http://img.shields.io/badge/galaxy-AlbanAndrieu.jboss-blue.svg?style=flat)](https://galaxy.ansible.com/list#/roles/1775) [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
+[![Travis CI](http://img.shields.io/travis/AlbanAndrieu/ansible-jboss.svg?style=flat)](http://travis-ci.org/AlbanAndrieu/ansible-jboss) [![Branch](http://img.shields.io/github/tag/AlbanAndrieu/ansible-jboss.svg?style=flat-square)](https://github.com/AlbanAndrieu/ansible-jboss/tree/master) [![Donate](https://img.shields.io/gratipay/AlbanAndrieu.svg?style=flat)](https://www.gratipay.com/AlbanAndrieu)  [![Ansible Galaxy](http://img.shields.io/badge/galaxy-alban.andrieu.jboss-blue.svg?style=flat)](https://galaxy.ansible.com/list#/roles/1775) [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
 
 Ensures that jboss is properly installed (using `apt`) and configured
 
@@ -10,7 +10,7 @@ This role requires at least Ansible `v1.6.3`.
 
 To install it, run:
 
-    ansible-galaxy install AlbanAndrieu.jboss
+    ansible-galaxy install alban.andrieu.jboss
 
 
 
@@ -19,8 +19,7 @@ To install it, run:
 List of default variables available in the inventory:
 
 ```yaml
-    ---
-    jboss_enabled: yes                       # Enable module
+        jboss_enabled: yes                       # Enable module
     
     jboss_http_port: 8180
     jboss_https_port: 8443
@@ -58,7 +57,7 @@ Describe how to use in more detail...
 
 ### Authors and license
 
-`jboss` role was written by:
+`alban.andrieu.jboss` role was written by:
 - [Alban Andrieu](fr.linkedin.com/in/nabla/) | [e-mail](mailto:alban.andrieu@free.fr) | [Twitter](https://twitter.com/AlbanAndrieu) | [GitHub](https://github.com/AlbanAndrieu)
 - License: [GPLv3](https://tldrlegal.com/license/gnu-general-public-license-v3-%28gpl-3%29)
 
