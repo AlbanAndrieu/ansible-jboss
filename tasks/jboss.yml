@@ -1,50 +1,69 @@
----
-- name: Install Java 1.7 and some basic dependencies
+#sudo ansible-playbook -i hosts-albandri -c local -v jboss.yml -vvvv | tee setup.log
+
+- name: Install Java 1.8 and some basic dependencies
   yum: name={{ item }} state=present
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'    
   with_items:
    - unzip
-   - java-1.7.0-openjdk
+   - java-1.8.0-openjdk
+  become: yes
    
-- name: Install Java 1.7 and some basic dependencies
+- name: Install Java 1.8 and some basic dependencies
   apt: pkg={{ item }} state=present update_cache=yes  
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'  
   with_items:
    - unzip
-   - openjdk-7-jdk
-
+   - openjdk-8-jdk
+  become: yes
+  
 - name: Create directory for Jboss build
   file: path=/opt/ state=directory mode=0755
-    
+  become: yes
+   
 - name: Download JBoss from jboss.org
   get_url: url={{ jboss_url }} dest=/opt/{{ jboss_archive }}
-
+  become: yes
+  
 - name: Extract archive
   command: chdir=/usr/share /usr/bin/unzip -q /opt/{{ jboss_archive }} creates={{ jboss_base_dir }}
-
+  become: yes
+  
   # Rcd /g the version in the init script
 - name: Rename install directory
   command: chdir=/usr/share /bin/mv {{ jboss_archive_extracted }} jboss-as creates={{ jboss_base_dir }}
-
+  become: yes
+  
 - name: Copying standalone.xml configuration file
   template: src=standalone.xml dest={{ jboss_base_dir }}/standalone/configuration/
   notify: restart jboss
-
+  become: yes
+  
 - name: Add group "{{ jboss_group }}"
   group: name={{ jboss_group }}
-
+  become: yes
+  
 - name: Add user "{{ jboss_owner }}"
   user: name={{ jboss_owner }} group={{ jboss_group }} home={{ jboss_base_dir }} shell={{ jboss_shell }} comment="Jboss User" 
-
+  become: yes
+  
 - name: Change ownership of JBoss installation
   file: path={{ jboss_base_dir }}/ owner={{ jboss_owner }} group={{ jboss_group }} state=directory recurse=yes
-
+  become: yes
+  
+- name: Create Jboss directory link (legacy required)
+  file: path={{ jboss_link_dir }} src={{ jboss_base_dir }} state=link
+  become: yes
+  
 - name: Copy the init script
   copy: src=jboss-as-standalone-{{ ansible_distribution }}.sh dest=/etc/init.d/jboss mode=0755
-
+#  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_distribution_version in ['12.04', '14.04', '16.04']  
+  become: yes
+  
 - name: Enable JBoss to be started at boot
   service: name=jboss enabled=yes state=started 
-
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_distribution_version in ['12.04', '14.04', '16.04']  
+  become: yes
+  
 #- name: deploy iptables rules
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
 #  notify: restart iptables

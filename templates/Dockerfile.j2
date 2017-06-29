@@ -9,7 +9,7 @@ VOLUME      [{{ docker_volume_directory }}]
 MAINTAINER  Alban Andrieu "https://github.com/AlbanAndrieu"
 
 ENV			DEBIAN_FRONTEND noninteractive
-ENV         JBOSS_HOME {{ jboss_home_dir }}
+ENV         JBOSS_HOME {{ jboss_base_dir }}
 ENV         WORKDIR /home/vagrant
 
 # Working dir
