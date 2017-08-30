@@ -53,6 +53,7 @@
 - name: Create Jboss directory link (legacy required)
   file: path={{ jboss_link_dir }} src={{ jboss_base_dir }} state=link
   become: yes
+  ignore_errors: true  
   
 - name: Copy the init script
   copy: src=jboss-as-standalone-{{ ansible_distribution }}.sh dest=/etc/init.d/jboss mode=0755
